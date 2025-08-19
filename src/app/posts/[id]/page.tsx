@@ -3,25 +3,32 @@ import Container from "@/components/Container";
 import estilos from "./detalhe-post.module.css";
 import { Post } from "@/types/Post";
 import { notFound } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 type DetalhePostProps = {
   params: Promise<{ id: string }>;
 };
 
 async function buscarPostPorId(id: string): Promise<Post> {
-  const resposta = await fetch(`http://localhost:2112/posts/${id}`, {
-    next: { revalidate: 0 },
-  });
+  const { data, error } = await supabase
+    .from("posts")
+    .select("*")
+    .eq("id", id)
+    .single<Post>();
 
-  if (resposta.status === 404) {
+  /* Esse PGRST116 é um código interno da API Postgre usado pelo Supabase.
+  Na prática, indica que se a query single não retornar nenhum item,
+  ou seja, zero resultados, ele dispara esse código e com isso chamamos
+  a função notFound (que por sua vez carrega a page not-found.tsx). */
+  if (error?.code === "PGRST116") {
     notFound();
   }
 
-  if (!resposta.ok) {
-    throw Error("Erro ao buscar o post: " + resposta.statusText);
+  if (error) {
+    throw new Error("Erro ao buscar post: " + error.message);
   }
 
-  const post: Post = await resposta.json();
+  const post: Post = data;
   return post;
 }
 
