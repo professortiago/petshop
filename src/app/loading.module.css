@@ -1,0 +1,14 @@
+.conteudo {
+  h2::before {
+    content: "⌛ ";
+  }
+
+  .imagemLoading {
+    text-align: center;
+
+    img {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}
