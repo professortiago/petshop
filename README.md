@@ -2,6 +2,23 @@
 
 Projeto de uma aplicação web SPA usando Next.js, Typescript e Supabase (Baas - Back-End as a Service).
 
+## 08_filtro-de-categorias
+
+### Resumo do ciclo de comunicação da prop que passa uma função do pai (ListaPosts) para o filho (FiltroCategorias)
+
+- Usuário clica em um botão do FiltroCategorias (Filho)
+- Esse clique (`onClick`) "chama" a prop `aoSelecionar` passando pra ela a categoria escolhida (por exemplo, 'bem-estar')
+- O `aoSelecionar` na verdade é um apontamento para o `setCategoriaAtiva` definida no pai (ListaPosts)
+- O React/Next atualiza o estado (o state `categoriaAtiva`) do pai
+- O pai (ListaPosts) reexecuta com o novo estado, exibindo os posts conforme a categoria ativa
+- O `postsFiltrados` é atualizado e os posts filtrados aparecem.
+
+Em resumo, o filho **não muda o estado sozinho**. Ele só **avisa** o pai.
+
+Quem tem o estado, tem o controle.
+
+---
+
 ## 07_componentes-SemPosts-e-notFound-da-rota-de-posts
 
 - Criação do componente `SemPosts.tsx` e aplicação de renderização condicional na page `Home`
