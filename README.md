@@ -1,6 +1,6 @@
 # PetShop
 
-Projeto de uma aplicação web SPA usando Next.js, Typescript e Supabase (Baas - Back-End as a Service).
+Projeto de uma aplicação web SPA usando Next.js, Typescript e Supabase (Baas - Back-End as a Service). Teste!
 
 ---
 
