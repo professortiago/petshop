@@ -1,0 +1,22 @@
+{
+  "name": "PetShop 2025",
+  "short_name": "petshop",
+  "description": "PWA criada usando o framework Next.js e integração de dados com o Supabase",
+  "theme_color": "#000",
+  "background_color": "#fff",
+  "start_url": "/",
+  "display": "standalone",
+  "lang": "pt-br",
+  "icons": [
+    {
+      "src": "/icons/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
